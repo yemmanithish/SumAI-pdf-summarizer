@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #e0e7ff, #fff7e0);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            text-align: left;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        p strong {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .copy{
+            display:float;
+            float:left;
+            border-radius:30px;
+        }
+        .back{
+            display:float;
+            float:right;
+            border-radius:30px;
+        }
+        a, button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        a:hover, button:hover {
+            background-color: #0056b3;
+        }
+
+        .highlight {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+    <title>Summary</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Summary</h1>
+        </header>
+        <p><strong>Summary:</strong></p>
+        <p class="highlight" id="summaryText">{{ summary }}</p>
+        
+        <!-- Copy to Clipboard Button -->
+        <div class = "btns">
+        <button onclick="copyToClipboard()" class = "copy" style="border:none;">Copy to Clipboard</button>
+        
+        <a href="/" class = "back">Back</a></div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            // Get the text from the paragraph
+            var textToCopy = document.getElementById("summaryText").textContent;
+
+            // Create a temporary input to copy text from
+            var tempInput = document.createElement("textarea");
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+
+            // Select and copy the text
+            tempInput.select();
+            document.execCommand("copy");
+
+            // Remove the temporary input
+            document.body.removeChild(tempInput);
+
+            // Alert the user
+            alert("Summary copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
